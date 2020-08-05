@@ -1,0 +1,47 @@
+<div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="inputEmail4">producto</label>
+            <input type="text" class="form-control" name="prod" [(ngModel)]="prod" >
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputPassword4">valor</label>
+            <input type="number" class="form-control" name="val" [(ngModel)]="val">
+        </div>
+        <div class="col-auto my-1">
+            <label for="submit" style="color: transparent;">xxxxxx</label>
+            <button type="button" class="form-control btn btn-primary"
+            [disabled]="isDisabled" (click)="addElement(prod, val)">Agregar</button>
+        </div>
+        <div class="col-auto my-1">
+            <label for="submit" style="color: transparent;">xxxxxx</label>
+            <button type="button" class="form-control btn btn-primary"
+            [disabled]="dropDisabled" (click)="editCampo(prod, val)">Editar</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Productos</th>
+                <th scope="col">Valor</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of list;let index = index;">
+                <th scope="row">{{index}}</th>
+                <td>{{item.producto}}</td>
+                <!-- <td><input name="item.producto" [(ngModel)]="item.producto">{{item.producto}}</td> -->
+                <td>{{item.valor}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="editElement(item.producto,item.valor, index)">edit</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deleteElement(index)">delete</button></td>
+                <!-- <td><input type="text" name="" id=""[(ngModel)]="list[index]"></td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
